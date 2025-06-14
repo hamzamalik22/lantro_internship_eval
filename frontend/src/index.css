@@ -275,6 +275,25 @@ body {
   background-position: right 1rem center;
   background-size: 1.25rem;
   padding-right: 2.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  border: 1.5px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.form-group select:hover {
+  border-color: var(--primary-400);
+  background-color: var(--hover-background);
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .form-group textarea {
@@ -373,15 +392,19 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease;
 }
 
 .dashboard-nav {
   background-color: var(--card-background);
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  box-shadow: var(--shadow);
   padding: 1rem;
   position: sticky;
   top: 0;
   z-index: 10;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
 
 .nav-content {
@@ -395,8 +418,9 @@ body {
 }
 
 .nav-left h1 {
-  color: var(--primary-color);
+  color: var(--primary-600);
   font-size: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .nav-right {
@@ -414,25 +438,41 @@ body {
 
 .user-name {
   font-weight: 500;
+  color: var(--text-color);
 }
 
 .user-role {
   font-size: 0.875rem;
-  color: var(--secondary-color);
+  color: var(--text-color-secondary);
 }
 
 .logout-button {
-  background-color: var(--danger-color);
+  background-color: var(--error-500);
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1.25rem;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .logout-button:hover {
-  background-color: #dc2626;
+  background-color: var(--error-700);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.logout-button:active {
+  transform: translateY(0);
+}
+
+.logout-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .dashboard-main {
@@ -441,6 +481,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease;
 }
 
 .dashboard-header {
@@ -451,10 +493,12 @@ body {
   font-size: 1.875rem;
   color: var(--text-color);
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
 }
 
 .dashboard-header p {
-  color: var(--secondary-color);
+  color: var(--text-color-secondary);
+  transition: color 0.3s ease;
 }
 
 .dashboard-grid {
@@ -466,14 +510,22 @@ body {
 .dashboard-card {
   background-color: var(--card-background);
   border-radius: 0.75rem;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  box-shadow: var(--shadow);
   overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .card-header {
   padding: 1rem;
-  background-color: var(--primary-color);
+  background-color: var(--primary-600);
   color: white;
+  transition: background-color 0.3s ease;
 }
 
 .card-header h3 {
@@ -483,12 +535,15 @@ body {
 
 .card-content {
   padding: 1.5rem;
+  background-color: var(--card-background);
+  transition: background-color 0.3s ease;
 }
 
 .stat-value {
   font-size: 2rem;
   font-weight: 600;
   color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
 /* Loading Spinner */
@@ -549,7 +604,8 @@ body {
   .nav-content {
     flex-direction: column;
     align-items: flex-start;
-    padding: 0.5rem;
+    padding: 0.75rem;
+    gap: 0.75rem;
   }
 
   .nav-right {
@@ -568,10 +624,11 @@ body {
 
   .dashboard-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .dashboard-main {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .auth-form {
@@ -626,7 +683,7 @@ body {
   }
 
   .dashboard-main {
-    padding: 0.75rem;
+    padding: 1rem 0.75rem;
   }
 
   .card-content {
@@ -655,6 +712,19 @@ body {
 
   .auth-button {
     padding: 0.6rem;
+  }
+
+  .dashboard-nav {
+    padding: 0.5rem;
+  }
+
+  .nav-left h1 {
+    font-size: 1.25rem;
+  }
+
+  .logout-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -1098,4 +1168,91 @@ body {
     width: 2.5rem;
     height: 2.5rem;
   }
+}
+
+/* Form Select Styles */
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  background-color: var(--input-background);
+  border: 1.5px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.form-group select:hover {
+  border-color: var(--primary-400);
+  background-color: var(--hover-background);
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Dark Mode Select Styles */
+:root[data-theme="dark"] .form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23e2e8f0'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  color: var(--text-color);
+  background-color: var(--input-background);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .form-group select:hover {
+  border-color: var(--primary-400);
+  background-color: var(--hover-background);
+}
+
+:root[data-theme="dark"] .form-group select:focus {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Select Options Styling */
+.form-group select option {
+  background-color: var(--card-background);
+  color: var(--text-color);
+  padding: 0.5rem;
+}
+
+:root[data-theme="dark"] .form-group select option {
+  background-color: var(--gray-800);
+  color: var(--text-color);
+}
+
+/* Select Placeholder */
+.form-group select:invalid {
+  color: var(--text-color-secondary);
+}
+
+/* Select Disabled State */
+.form-group select:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background-color: var(--gray-100);
+}
+
+:root[data-theme="dark"] .form-group select:disabled {
+  background-color: var(--gray-800);
+  opacity: 0.7;
+}
+
+/* Select Loading State */
+.form-group select.loading {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+  animation: spin 1s linear infinite;
 }
