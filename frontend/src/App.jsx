@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Dashboard from './pages/Dashboard';
+import ThemeSwitcher from './components/ThemeSwitcher';
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
@@ -23,6 +24,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
+        <ThemeSwitcher />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
